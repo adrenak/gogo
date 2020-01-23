@@ -5,19 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Oculus/VR/Scenes/Input Selection/Scenes/main.unity
     guid: 21cfd28b161f0274485ba647ee2d53ff
-  - enabled: 1
+  - enabled: 0
     path: Assets/Oculus/VR/Scenes/Input Selection/Scenes/selection_all.unity
     guid: 1fe51ae228be44249960da99990334a6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Oculus/VR/Scenes/Input Selection/Scenes/selection_physics.unity
     guid: f65f9977fe8fdc64bb284afaa139b5b7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Oculus/VR/Scenes/Input Selection/Scenes/selection_raw.unity
     guid: 26f978972a02a724fb60c4662a9a9d26
-  - enabled: 1
+  - enabled: 0
     path: Assets/Oculus/VR/Scenes/Input Selection/Scenes/selection_ui.unity
     guid: ed54ebaf318bd854da9cbe7938e2bb62
+  - enabled: 0
+    path: Assets/Oculus/VR/Scenes/GearVrControllerTest.unity
+    guid: d56af3aeb2176e7459f753c1c2e2dd97
+  - enabled: 1
+    path: Assets/Adrenak/GoGo/Demo/Demo.unity
+    guid: fedb737b8ee60a44988cb5fa36840a7f
   m_configObjects: {}

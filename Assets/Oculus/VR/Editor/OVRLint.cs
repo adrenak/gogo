@@ -611,7 +611,7 @@ public class OVRLint : EditorWindow
 			}, null, false, "Set OVRPlugin.occlusionMesh = true");
 		}
 
-		if (OVRManager.instance != null && !OVRManager.instance.useRecommendedMSAALevel)
+		if (OVRManager.Instance != null && !OVRManager.Instance.useRecommendedMSAALevel)
 		{
 			AddFix("Optimize MSAA", "OVRManager can select the optimal antialiasing for the installed hardware at runtime. Recommend enabling this.", delegate (UnityEngine.Object obj, bool last, int selected)
 			{

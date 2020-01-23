@@ -67,7 +67,7 @@ public class OVRDirectComposition : OVRCameraComposition
 			directCompositionCamera.stereoTargetEye = StereoTargetEyeMask.None;
 			directCompositionCamera.depth = float.MaxValue;
 			directCompositionCamera.rect = new Rect(0.0f, 0.0f, 1.0f, 1.0f);
-			directCompositionCamera.cullingMask = mainCamera.cullingMask & (~OVRManager.instance.extraHiddenLayers);
+			directCompositionCamera.cullingMask = mainCamera.cullingMask & (~OVRManager.Instance.extraHiddenLayers);
 
 			Debug.Log("DirectComposition activated : useDynamicLighting " + (useDynamicLighting ? "ON" : "OFF"));
 			RefreshCameraFramePlaneObject(parentObject, directCompositionCamera, useDynamicLighting);
@@ -85,21 +85,21 @@ public class OVRDirectComposition : OVRCameraComposition
 
 		RefreshCameraObjects(gameObject, mainCamera);
 
-		if (!OVRPlugin.SetHandNodePoseStateLatency(OVRManager.instance.handPoseStateLatency))
+		if (!OVRPlugin.SetHandNodePoseStateLatency(OVRManager.Instance.handPoseStateLatency))
 		{
-			Debug.LogWarning("HandPoseStateLatency is invalid. Expect a value between 0.0 to 0.5, get " + OVRManager.instance.handPoseStateLatency);
+			Debug.LogWarning("HandPoseStateLatency is invalid. Expect a value between 0.0 to 0.5, get " + OVRManager.Instance.handPoseStateLatency);
 		}
 
 		directCompositionCamera.clearFlags = mainCamera.clearFlags;
 		directCompositionCamera.backgroundColor = mainCamera.backgroundColor;
-		directCompositionCamera.cullingMask = mainCamera.cullingMask & (~OVRManager.instance.extraHiddenLayers);
+		directCompositionCamera.cullingMask = mainCamera.cullingMask & (~OVRManager.Instance.extraHiddenLayers);
 		directCompositionCamera.nearClipPlane = mainCamera.nearClipPlane;
 		directCompositionCamera.farClipPlane = mainCamera.farClipPlane;
 
 		if (OVRMixedReality.useFakeExternalCamera || OVRPlugin.GetExternalCameraCount() == 0)
 		{
 			OVRPose trackingSpacePose = new OVRPose();
-			trackingSpacePose.position = OVRManager.instance.trackingOriginType == OVRManager.TrackingOrigin.EyeLevel ? 
+			trackingSpacePose.position = OVRManager.Instance.trackingOriginType == OVRManager.TrackingOrigin.EyeLevel ? 
 				OVRMixedReality.fakeCameraEyeLevelPosition : 
 				OVRMixedReality.fakeCameraFloorLevelPosition;
 			trackingSpacePose.orientation = OVRMixedReality.fakeCameraRotation;

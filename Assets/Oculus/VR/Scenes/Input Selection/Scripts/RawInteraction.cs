@@ -54,6 +54,20 @@ public class RawInteraction : MonoBehaviour {
         }
     }
 
+    public void OnDown(Transform t){
+        Debug.Log("Down on " + t.gameObject.name);
+        if (outText != null) {
+            outText.text = "<b>Last Interaction:</b>\nDown On:" + t.gameObject.name;
+        }
+    }
+
+    public void OnUp(Transform t) {
+        Debug.Log("Up on " + t.gameObject.name);
+        if (outText != null) {
+            outText.text = "<b>Last Interaction:</b>\nUp On:" + t.gameObject.name;
+        }
+    }
+
     public void OnSelected(Transform t) {
         if (t.gameObject.name == "BackButton") {
             SceneManager.LoadScene("main", LoadSceneMode.Single);

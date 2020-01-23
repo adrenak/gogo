@@ -93,7 +93,7 @@ public class OVRExternalComposition : OVRComposition
 			backgroundCamera.stereoTargetEye = StereoTargetEyeMask.None;
 			backgroundCamera.depth = 99990.0f;
 			backgroundCamera.rect = new Rect(0.0f, 0.0f, 0.5f, 1.0f);
-			backgroundCamera.cullingMask = mainCamera.cullingMask & (~OVRManager.instance.extraHiddenLayers);
+			backgroundCamera.cullingMask = mainCamera.cullingMask & (~OVRManager.Instance.extraHiddenLayers);
 #if OVR_ANDROID_MRC
 			backgroundCamera.targetTexture = mrcRenderTextureArray[0];
 #endif
@@ -117,11 +117,11 @@ public class OVRExternalComposition : OVRComposition
 			foregroundCamera.rect = new Rect(0.5f, 0.0f, 0.5f, 1.0f);
 			foregroundCamera.clearFlags = CameraClearFlags.Color;
 #if OVR_ANDROID_MRC
-			foregroundCamera.backgroundColor = OVRManager.instance.externalCompositionBackdropColorQuest;
+			foregroundCamera.backgroundColor = OVRManager.Instance.externalCompositionBackdropColorQuest;
 #else
-			foregroundCamera.backgroundColor = OVRManager.instance.externalCompositionBackdropColorRift;
+			foregroundCamera.backgroundColor = OVRManager.Instance.externalCompositionBackdropColorRift;
 #endif
-			foregroundCamera.cullingMask = mainCamera.cullingMask & (~OVRManager.instance.extraHiddenLayers);
+			foregroundCamera.cullingMask = mainCamera.cullingMask & (~OVRManager.Instance.extraHiddenLayers);
 #if OVR_ANDROID_MRC
 			foregroundCamera.targetTexture = mrcRenderTextureArray[0];
 #endif
@@ -136,9 +136,9 @@ public class OVRExternalComposition : OVRComposition
 			Material clipMaterial = new Material(Shader.Find("Oculus/OVRMRClipPlane"));
 			cameraProxyPlane.GetComponent<MeshRenderer>().material = clipMaterial;
 #if OVR_ANDROID_MRC
-			clipMaterial.SetColor("_Color", OVRManager.instance.externalCompositionBackdropColorQuest);
+			clipMaterial.SetColor("_Color", OVRManager.Instance.externalCompositionBackdropColorQuest);
 #else
-			clipMaterial.SetColor("_Color", OVRManager.instance.externalCompositionBackdropColorRift);
+			clipMaterial.SetColor("_Color", OVRManager.Instance.externalCompositionBackdropColorRift);
 #endif
 			clipMaterial.SetFloat("_Visible", 0.0f);
 			cameraProxyPlane.transform.localScale = new Vector3(1000, 1000, 1000);
@@ -272,11 +272,11 @@ public class OVRExternalComposition : OVRComposition
 
 		backgroundCamera.clearFlags = mainCamera.clearFlags;
 		backgroundCamera.backgroundColor = mainCamera.backgroundColor;
-		backgroundCamera.cullingMask = mainCamera.cullingMask & (~OVRManager.instance.extraHiddenLayers);
+		backgroundCamera.cullingMask = mainCamera.cullingMask & (~OVRManager.Instance.extraHiddenLayers);
 		backgroundCamera.nearClipPlane = mainCamera.nearClipPlane;
 		backgroundCamera.farClipPlane = mainCamera.farClipPlane;
 
-		foregroundCamera.cullingMask = mainCamera.cullingMask & (~OVRManager.instance.extraHiddenLayers);
+		foregroundCamera.cullingMask = mainCamera.cullingMask & (~OVRManager.Instance.extraHiddenLayers);
 		foregroundCamera.nearClipPlane = mainCamera.nearClipPlane;
 		foregroundCamera.farClipPlane = mainCamera.farClipPlane;
 
@@ -284,7 +284,7 @@ public class OVRExternalComposition : OVRComposition
 		{
 			OVRPose worldSpacePose = new OVRPose();
 			OVRPose trackingSpacePose = new OVRPose();
-			trackingSpacePose.position = OVRManager.instance.trackingOriginType == OVRManager.TrackingOrigin.EyeLevel ?
+			trackingSpacePose.position = OVRManager.Instance.trackingOriginType == OVRManager.TrackingOrigin.EyeLevel ?
 				OVRMixedReality.fakeCameraEyeLevelPosition :
 				OVRMixedReality.fakeCameraFloorLevelPosition;
 			trackingSpacePose.orientation = OVRMixedReality.fakeCameraRotation;

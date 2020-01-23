@@ -174,24 +174,24 @@ public abstract class OVRCameraComposition : OVRComposition {
 
 			float cullingDistance = float.MaxValue;
 
-			if (OVRManager.instance.virtualGreenScreenType != OVRManager.VirtualGreenScreenType.Off)
+			if (OVRManager.Instance.virtualGreenScreenType != OVRManager.VirtualGreenScreenType.Off)
 			{
 				RefreshBoundaryMesh(mixedRealityCamera, out cullingDistance);
 			}
 
 			cameraFrameMaterial.mainTexture = colorTexture;
 			cameraFrameMaterial.SetTexture("_DepthTex", depthTexture);
-			cameraFrameMaterial.SetVector("_FlipParams", new Vector4((OVRManager.instance.flipCameraFrameHorizontally ? 1.0f : 0.0f), (OVRManager.instance.flipCameraFrameVertically ? 1.0f : 0.0f), 0.0f, 0.0f));
-			cameraFrameMaterial.SetColor("_ChromaKeyColor", OVRManager.instance.chromaKeyColor);
-			cameraFrameMaterial.SetFloat("_ChromaKeySimilarity", OVRManager.instance.chromaKeySimilarity);
-			cameraFrameMaterial.SetFloat("_ChromaKeySmoothRange", OVRManager.instance.chromaKeySmoothRange);
-			cameraFrameMaterial.SetFloat("_ChromaKeySpillRange", OVRManager.instance.chromaKeySpillRange);
+			cameraFrameMaterial.SetVector("_FlipParams", new Vector4((OVRManager.Instance.flipCameraFrameHorizontally ? 1.0f : 0.0f), (OVRManager.Instance.flipCameraFrameVertically ? 1.0f : 0.0f), 0.0f, 0.0f));
+			cameraFrameMaterial.SetColor("_ChromaKeyColor", OVRManager.Instance.chromaKeyColor);
+			cameraFrameMaterial.SetFloat("_ChromaKeySimilarity", OVRManager.Instance.chromaKeySimilarity);
+			cameraFrameMaterial.SetFloat("_ChromaKeySmoothRange", OVRManager.Instance.chromaKeySmoothRange);
+			cameraFrameMaterial.SetFloat("_ChromaKeySpillRange", OVRManager.Instance.chromaKeySpillRange);
 			cameraFrameMaterial.SetVector("_TextureDimension", new Vector4(colorTexture.width, colorTexture.height, 1.0f / colorTexture.width, 1.0f / colorTexture.height));
 			cameraFrameMaterial.SetVector("_TextureWorldSize", new Vector4(worldWidth, worldHeight, 0, 0));
-			cameraFrameMaterial.SetFloat("_SmoothFactor", OVRManager.instance.dynamicLightingSmoothFactor);
-			cameraFrameMaterial.SetFloat("_DepthVariationClamp", OVRManager.instance.dynamicLightingDepthVariationClampingValue);
+			cameraFrameMaterial.SetFloat("_SmoothFactor", OVRManager.Instance.dynamicLightingSmoothFactor);
+			cameraFrameMaterial.SetFloat("_DepthVariationClamp", OVRManager.Instance.dynamicLightingDepthVariationClampingValue);
 			cameraFrameMaterial.SetFloat("_CullingDistance", cullingDistance);
-			if (OVRManager.instance.virtualGreenScreenType == OVRManager.VirtualGreenScreenType.Off || boundaryMesh == null || boundaryMeshMaskTexture == null)
+			if (OVRManager.Instance.virtualGreenScreenType == OVRManager.VirtualGreenScreenType.Off || boundaryMesh == null || boundaryMeshMaskTexture == null)
 			{
 				cameraFrameMaterial.SetTexture("_MaskTex", Texture2D.whiteTexture);
 			}
@@ -223,14 +223,14 @@ public abstract class OVRCameraComposition : OVRComposition {
 
 	protected void RefreshBoundaryMesh(Camera camera, out float cullingDistance)
 	{
-		float depthTolerance = OVRManager.instance.virtualGreenScreenApplyDepthCulling ? OVRManager.instance.virtualGreenScreenDepthTolerance : float.PositiveInfinity;
-		cullingDistance = OVRCompositionUtil.GetMaximumBoundaryDistance(camera, OVRCompositionUtil.ToBoundaryType(OVRManager.instance.virtualGreenScreenType)) + depthTolerance;
-		if (boundaryMesh == null || boundaryMeshType != OVRManager.instance.virtualGreenScreenType || boundaryMeshTopY != OVRManager.instance.virtualGreenScreenTopY || boundaryMeshBottomY != OVRManager.instance.virtualGreenScreenBottomY)
+		float depthTolerance = OVRManager.Instance.virtualGreenScreenApplyDepthCulling ? OVRManager.Instance.virtualGreenScreenDepthTolerance : float.PositiveInfinity;
+		cullingDistance = OVRCompositionUtil.GetMaximumBoundaryDistance(camera, OVRCompositionUtil.ToBoundaryType(OVRManager.Instance.virtualGreenScreenType)) + depthTolerance;
+		if (boundaryMesh == null || boundaryMeshType != OVRManager.Instance.virtualGreenScreenType || boundaryMeshTopY != OVRManager.Instance.virtualGreenScreenTopY || boundaryMeshBottomY != OVRManager.Instance.virtualGreenScreenBottomY)
 		{
-			boundaryMeshTopY = OVRManager.instance.virtualGreenScreenTopY;
-			boundaryMeshBottomY = OVRManager.instance.virtualGreenScreenBottomY;
-			boundaryMesh = OVRCompositionUtil.BuildBoundaryMesh(OVRCompositionUtil.ToBoundaryType(OVRManager.instance.virtualGreenScreenType), boundaryMeshTopY, boundaryMeshBottomY);
-			boundaryMeshType = OVRManager.instance.virtualGreenScreenType;
+			boundaryMeshTopY = OVRManager.Instance.virtualGreenScreenTopY;
+			boundaryMeshBottomY = OVRManager.Instance.virtualGreenScreenBottomY;
+			boundaryMesh = OVRCompositionUtil.BuildBoundaryMesh(OVRCompositionUtil.ToBoundaryType(OVRManager.Instance.virtualGreenScreenType), boundaryMeshTopY, boundaryMeshBottomY);
+			boundaryMeshType = OVRManager.Instance.virtualGreenScreenType;
 
 			// Creating GameObject for testing purpose only
 			//GameObject boundaryMeshObject = new GameObject("BoundaryMeshObject");
@@ -261,7 +261,7 @@ public abstract class OVRCameraComposition : OVRComposition {
 
 		void OnPreRender()
 		{
-			if (OVRManager.instance.virtualGreenScreenType != OVRManager.VirtualGreenScreenType.Off && boundaryMeshMaskTexture != null && composition.boundaryMesh != null)
+			if (OVRManager.Instance.virtualGreenScreenType != OVRManager.VirtualGreenScreenType.Off && boundaryMeshMaskTexture != null && composition.boundaryMesh != null)
 			{
 				RenderTexture oldRT = RenderTexture.active;
 				RenderTexture.active = boundaryMeshMaskTexture;

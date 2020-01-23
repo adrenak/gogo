@@ -91,12 +91,12 @@ internal class OVRCompositionUtil {
 
 	public static float GetMaximumBoundaryDistance(Camera camera, OVRBoundary.BoundaryType boundaryType)
 	{
-		if (!OVRManager.boundary.GetConfigured())
+		if (!OVRManager.Boundary.GetConfigured())
 		{
 			return float.MaxValue;
 		}
 
-		Vector3[] geometry = OVRManager.boundary.GetGeometry(boundaryType);
+		Vector3[] geometry = OVRManager.Boundary.GetGeometry(boundaryType);
 		if (geometry.Length == 0)
 		{
 			return float.MaxValue;
@@ -117,12 +117,12 @@ internal class OVRCompositionUtil {
 
 	public static Mesh BuildBoundaryMesh(OVRBoundary.BoundaryType boundaryType, float topY, float bottomY)
 	{
-		if (!OVRManager.boundary.GetConfigured())
+		if (!OVRManager.Boundary.GetConfigured())
 		{
 			return null;
 		}
 
-		List<Vector3> geometry = new List<Vector3>(OVRManager.boundary.GetGeometry(boundaryType));
+		List<Vector3> geometry = new List<Vector3>(OVRManager.Boundary.GetGeometry(boundaryType));
 		if (geometry.Count == 0)
 		{
 			return null;
